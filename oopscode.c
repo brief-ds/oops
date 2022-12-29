@@ -1684,9 +1684,13 @@ onestep ()
   jumped = FALSE;
   insts++;
   inct /*some Q's cost more!*/
-      if (1 == c (aquoteflag)) if (n == quotenum) set (aquoteflag, 0);
-  else push (n);      /*if quote, then just push it!!*/
-  else (*Q[n].fn) (); /*calls function of the Q at ip*/
+  if (1 == c (aquoteflag))
+    if (n == quotenum)
+      set (aquoteflag, 0);
+    else
+      push (n);      /*if quote, then just push it!!*/
+  else
+    (*Q[n].fn) (); /*calls function of the Q at ip*/
   if (!jumped)
     setC (1, ip + 1); /*increments ip*/
   if ((*successfn) ())
